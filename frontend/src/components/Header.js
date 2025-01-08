@@ -1,30 +1,64 @@
 import React from 'react';
-import { Link } from '@mui/material';
+import { Link as MuiLink } from '@mui/material';
+import { Link as ScrollLink } from 'react-scroll'; // Import for smooth scrolling
+import { useNavigate } from 'react-router-dom';
 import '@fontsource/gloria-hallelujah'; // Funky font for the name
 import '@fontsource/open-sans'; // Clean font for navigation
 
 function Header() {
-  const navLinks = ["about", "newsletter", "art", "resources"];
+  const navigate = useNavigate(); // Hook for navigation
 
   return (
     <header style={styles.header}>
       <div style={styles.topBar}>
         <p style={styles.topBarText}>
-          🌿 Simplify and elevate your life with creativity and reflection
+          🌿 Everyone you see, you say to them, "Love me."
         </p>
       </div>
       <div style={styles.container}>
-        <h1 style={styles.logoText}>Fla Iespa</h1>
+        <h1
+          style={styles.logoText}
+          onClick={() => navigate('/')} // Navigate to home page
+        >
+          Fla Iespa
+        </h1>
         <nav style={styles.nav}>
-          {navLinks.map((link) => (
-            <Link
-              key={link}
-              href={`#${link}`}
-              style={styles.navLink}
-            >
-              {link}
-            </Link>
-          ))}
+          <ScrollLink
+            to="MainSection"
+            smooth={true}
+            duration={800}
+            offset={-70} // Adjust offset for header height
+            style={styles.navLink}
+          >
+            About
+          </ScrollLink>
+          <ScrollLink
+            to="ArtSection"
+            smooth={true}
+            duration={800}
+            offset={-70}
+            style={styles.navLink}
+          >
+            Art
+          </ScrollLink>
+          <ScrollLink
+            to="NewsletterSection"
+            smooth={true}
+            duration={800}
+            offset={-70}
+            style={styles.navLink}
+          >
+            Newsletter
+          </ScrollLink>
+          <ScrollLink
+            to="ResourcesSection"
+            smooth={true}
+            duration={800}
+            offset={-70}
+            style={styles.navLink}
+          >
+            Resources
+          </ScrollLink>
         </nav>
       </div>
       <div style={styles.separator}></div>
@@ -63,6 +97,7 @@ const styles = {
     margin: 0,
     flexShrink: 0, // Prevent logo from shrinking
     textAlign: 'left', // Explicitly align text to the left
+    cursor: 'pointer', // Add pointer cursor for interactivity
   },
   nav: {
     display: 'flex',
@@ -80,6 +115,7 @@ const styles = {
     padding: '10px 20px', // Add padding for a button-like feel
     borderRadius: '8px', // Rounded edges for a friendly design
     transition: 'color 0.3s ease, background-color 0.3s ease',
+    cursor: 'pointer', // Add pointer cursor for interactivity
     ':hover': {
       backgroundColor: '#DDE6D5', // Sage green on hover
       color: '#FDF6EE', // Light beige text for contrast

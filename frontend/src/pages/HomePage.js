@@ -8,18 +8,22 @@ function HomePage() {
   return (
     <div style={styles.container}>
       {/* Main Section */}
-      <MainSection />
+      <div id="MainSection">
+        <MainSection />
+      </div>
 
       {/* Art Section */}
-      <ArtSection />
+      <div id="ArtSection">
+        <ArtSection />
+      </div>
 
       {/* Newsletter Section */}
-      <NewsletterSection />
-
-      
+      <div id="NewsletterSection">
+        <NewsletterSection />
+      </div>
 
       {/* Newsletter Form Section */}
-      <div style={styles.newsletterContainer}>
+      <div id="NewsletterForm" style={styles.newsletterContainer}>
         <NewsletterForm />
       </div>
     </div>

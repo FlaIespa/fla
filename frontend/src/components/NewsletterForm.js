@@ -1,123 +1,102 @@
 import React, { useState } from 'react';
-import { Button, TextField } from '@mui/material';
-import { motion } from 'framer-motion';
+import supabase from '../supabase'; // Import Supabase client
+import { TextField, Button, Typography, Box } from '@mui/material';
 
 function NewsletterForm() {
   const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState(''); // 'success' or 'error'
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(`Subscribed with email: ${email}`);
-    setEmail('');
-  };
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    setMessage('');
+    setStatus('');
 
-  // Animation variants
-  const formVariant = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1, ease: 'easeOut' },
-    },
-  };
+    const { data, error } = await supabase
+      .from('subscriptions')
+      .insert([{ email }])
+      .single();
 
-  const buttonHover = {
-    scale: 1.05,
-    backgroundColor: '#F4C7C3', // Soft peach tone for hover
-    boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.2)',
-    transition: { duration: 0.3 },
+    if (error) {
+      setMessage('Oops! Something went wrong or email already exists.');
+      setStatus('error');
+    } else {
+      setMessage('Successfully subscribed to the newsletter!');
+      setStatus('success');
+      setEmail(''); // Clear the input field
+    }
   };
 
   return (
-    <motion.form
-      onSubmit={handleSubmit}
-      style={styles.form}
-      variants={formVariant}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-    >
-      <motion.h2 style={styles.heading}>Join My Newsletter</motion.h2>
-      <motion.p style={styles.subtext}>
-        Simplify your life with tips, stories, and reflections. Straight to your inbox.
-      </motion.p>
-      <motion.div style={styles.inputContainer}>
+    <Box sx={styles.container}>
+      <Typography variant="h4" sx={styles.heading}>
+        Subscribe to My Newsletter
+      </Typography>
+      <form onSubmit={handleSubscribe} style={styles.form}>
         <TextField
+          type="email"
           label="Your Email"
-          variant="outlined"
-          fullWidth
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          style={styles.input}
-          InputProps={{
-            style: {
-              backgroundColor: '#FFFFFF',
-              borderRadius: '8px',
-            },
-          }}
+          variant="outlined"
+          required
+          fullWidth
+          sx={styles.input}
         />
-        <motion.div
-          whileHover={buttonHover}
+        <Button type="submit" variant="contained" sx={styles.button}>
+          Subscribe
+        </Button>
+      </form>
+      {message && (
+        <Typography
+          sx={status === 'success' ? styles.successMessage : styles.errorMessage}
         >
-          <Button type="submit" variant="contained" style={styles.button}>
-            Subscribe
-          </Button>
-        </motion.div>
-      </motion.div>
-    </motion.form>
+          {message}
+        </Typography>
+      )}
+    </Box>
   );
 }
 
 const styles = {
+  container: {
+    textAlign: 'center',
+    padding: '20px',
+    backgroundColor: '#FDF6EE',
+    borderRadius: '8px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  },
+  heading: {
+    fontFamily: '"Gloria Hallelujah", cursive',
+    color: '#4A4A4A',
+    marginBottom: '20px',
+  },
   form: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    width: '100%',
-    maxWidth: '700px', // Make it slightly wider
-    padding: '60px',
-    background: '#FFF8F1', // Slightly lighter beige
-    border: '1px solid #DCD7C9', // Soft border
-    borderRadius: '12px',
-    textAlign: 'center',
-    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
-    margin: '40px auto',
-  },
-  heading: {
-    fontSize: '36px',
-    color: '#4A4A4A',
-    fontFamily: '"Cormorant Garamond", serif', // Elegant serif font
-    marginBottom: '20px',
-  },
-  subtext: {
-    fontSize: '18px',
-    color: '#4A4A4A',
-    fontFamily: '"Open Sans", sans-serif',
-    marginBottom: '30px',
-    lineHeight: '1.6',
-  },
-  inputContainer: {
-    display: 'flex',
-    gap: '15px', // Space between input field and button
-    width: '100%',
-    justifyContent: 'center',
+    gap: '10px',
     alignItems: 'center',
   },
   input: {
-    flex: 1,
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    maxWidth: '400px',
   },
   button: {
-    backgroundColor: '#97A97C', // Sage green
+    backgroundColor: '#97A97C',
     color: '#FFFFFF',
-    padding: '15px 30px',
+    padding: '10px 20px',
     fontSize: '16px',
     borderRadius: '8px',
-    fontWeight: 'bold',
-    textTransform: 'none',
-    boxShadow: '0 6px 8px rgba(0, 0, 0, 0.1)',
-    transition: 'all 0.3s ease',
-    cursor: 'pointer',
+    ':hover': {
+      backgroundColor: '#7B9464',
+    },
+  },
+  successMessage: {
+    color: '#28A745',
+    marginTop: '10px',
+  },
+  errorMessage: {
+    color: '#DC3545',
+    marginTop: '10px',
   },
 };
 

@@ -7,29 +7,29 @@ import "slick-carousel/slick/slick-theme.css";
 
 function ArtSection() {
     const cards = [
-        { image: '/images/image1.jpeg', caption: 'A beautiful sunrise at the beach' },
-        { image: '/images/image2.jpeg', caption: 'Exploring the vibrant streets of Rio' },
-        { image: '/images/image3.jpeg', caption: 'Calm evenings with nature' },
-        { image: '/images/image4.jpeg', caption: 'Memories of a mountain hike' },
-        { image: '/images/image5.jpeg', caption: 'A peaceful countryside escape' },
-        { image: '/images/image6.jpeg', caption: 'An unforgettable cityscape' },
-        { image: '/images/image7.jpeg', caption: 'Majestic forest adventures' },
-        { image: '/images/image8.jpeg', caption: 'Ocean waves at sunset' },
-        { image: '/images/image9.jpeg', caption: 'Mountain peaks covered in snow' },
-        { image: '/images/image10.jpeg', caption: 'Lush green landscapes' },
-        { image: '/images/image11.jpeg', caption: 'City lights at night' },
-        { image: '/images/image12.jpeg', caption: 'Charming village streets' },
-        { image: '/images/image13.jpeg', caption: 'Golden fields of wheat' },
-        { image: '/images/image14.jpeg', caption: 'Tranquil river reflections' },
-        { image: '/images/image15.jpeg', caption: 'Vivid autumn colors' },
-        { image: '/images/image16.jpeg', caption: 'Starry skies in the desert' },
+        { image: '/images/image1.jpeg', caption: 'Pier 39 in Christmas season' },
+        { image: '/images/image2.jpeg', caption: 'Sunrise at Twin Peaks' },
+        { image: '/images/image3.jpeg', caption: 'Home food away from home' },
+        { image: '/images/image4.jpeg', caption: 'Bay Bridge from Google Deep Mind' },
+        { image: '/images/image5.jpeg', caption: 'SF Symphony' },
+        { image: '/images/image6.jpeg', caption: 'Pier 39 after a run on a sunny day' },
+        { image: '/images/image7.jpeg', caption: 'Sunset at Ocean Beach' },
+        { image: '/images/image8.jpeg', caption: 'Break Dance in Embarcardero' },
+        { image: '/images/image9.jpeg', caption: 'View from my window' },
+        { image: '/images/image10.jpeg', caption: 'Home food away from home, part 2' },
+        { image: '/images/image11.jpeg', caption: 'Public library square' },
+        // { image: '/images/image12.jpeg', caption: 'Charming village streets' },
+        { image: '/images/image13.jpeg', caption: 'Capitola Beach' },
+        // { image: '/images/image14.jpeg', caption: 'Tranquil river reflections' },
+        { image: '/images/image15.jpeg', caption: 'Golden Gate Bridge from NYE trail' },
+        { image: '/images/image16.jpeg', caption: 'Candies I will bring my niece to try' },
       ];
 
   const sliderSettings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 6, // Show 8 cards at a time
+    slidesToShow: 5, // Show 8 cards at a time
     slidesToScroll: 1, // Scroll one at a time
     responsive: [
       {
@@ -50,7 +50,7 @@ function ArtSection() {
   return (
     <Box sx={styles.container}>
       <Typography variant="h4" sx={styles.heading}>
-        Discover My Artistic Journey
+        The Art in me
       </Typography>
 
       {/* Carousel */}
@@ -104,7 +104,7 @@ const styles = {
     margin: '10px',
   },
   image: {
-    height: '250px',
+    height: '400px',
     objectFit: 'cover',
     borderRadius: '8px',
     width: '100%',

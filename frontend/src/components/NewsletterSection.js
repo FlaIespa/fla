@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion'; // For animations
-import { Box, Typography, List, ListItem, Divider } from '@mui/material';
+import { Box, Typography, Button, Divider } from '@mui/material';
 
 function NewsletterSection() {
   return (
@@ -11,48 +11,36 @@ function NewsletterSection() {
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 1 }}
     >
-      {/* Heading */}
-      <Box sx={styles.textContainer}>
-        <Typography variant="h4" sx={styles.heading}>
-          Unlock Creativity and Stay Inspired
-        </Typography>
-        <Typography variant="body1" sx={styles.description}>
-          Join a vibrant community of explorers, writers, and coders. My
-          newsletter delivers curated insights, tools, and resources to spark
-          creativity and fuel your journey.
-        </Typography>
-        <Typography variant="body1" sx={styles.description}>
-          Whether you’re looking to stay grounded, discover new ideas, or
-          reflect on your growth, this is the place for you. Let’s grow and
-          create together!
-        </Typography>
+      {/* Decorative Accent Line */}
+      <Box sx={styles.accentLine}>
+        🌿
       </Box>
 
-      {/* Value Proposition */}
-      <Box sx={styles.valueProposition}>
-        <Typography variant="h5" sx={styles.highlight}>
-          What’s inside:
-        </Typography>
-        <List sx={styles.bulletPoints}>
-          <ListItem>🌿 Weekly inspiration for writing, coding, and exploration.</ListItem>
-          <ListItem>🌿 Practical tips to stay balanced and creative.</ListItem>
-          <ListItem>🌿 Curated tools and resources for your journey.</ListItem>
-          <ListItem>🌿 Thoughtful reflections to inspire your growth.</ListItem>
-          <ListItem>🌿 Exclusive access to community conversations.</ListItem>
-        </List>
-      </Box>
+      {/* Heading and Description */}
+      <Typography variant="h4" sx={styles.heading}>
+        Join My Creative Journey
+      </Typography>
+      <Typography variant="body1" sx={styles.description}>
+        Weekly thoughts, insights, and inspiration directly to your inbox.
+        Let’s grow together, one idea at a time.
+      </Typography>
 
-      {/* Quote or Call-to-Action */}
-      <Box sx={styles.quoteSection}>
-        <Typography variant="body2" sx={styles.quote}>
-          "Subscribing to this newsletter feels like a warm conversation with a
-          friend – thoughtful, inspiring, and full of life."
-        </Typography>
-        <Divider sx={styles.divider} />
-        <Typography variant="body1" sx={styles.cta}>
-          Join today and let’s grow together.
-        </Typography>
-      </Box>
+      {/* Divider */}
+      <Divider sx={styles.divider} />
+
+      {/* Subtle Quote */}
+      <Typography variant="body2" sx={styles.quote}>
+        "Every journey begins with a spark of inspiration."
+      </Typography>
+
+      {/* Call-to-Action Button */}
+      <Button
+        variant="contained"
+        style={styles.ctaButton}
+        href="/newsletters"
+      >
+        Explore Newsletters
+      </Button>
     </motion.div>
   );
 }
@@ -60,59 +48,52 @@ function NewsletterSection() {
 const styles = {
   container: {
     padding: '80px 40px',
-    backgroundColor: '#FDF6EE', // Light beige background
-    borderTop: '2px solid #DDE6D5', // Subtle sage green separator
-    borderBottom: '2px solid #DDE6D5',
+    backgroundColor: '#FDF6EE', // Soft beige
+    borderTop: '2px solid #DDE6D5',
     textAlign: 'center',
-    maxWidth: '900px',
-    margin: '0 auto',
   },
-  textContainer: {
-    marginBottom: '30px',
+  accentLine: {
+    fontSize: '28px', // Decorative icon
+    marginBottom: '20px',
+    color: '#97A97C', // Sage green
   },
   heading: {
     fontFamily: '"Gloria Hallelujah", cursive',
-    color: '#4A4A4A', // Dark gray
+    fontSize: '32px',
+    color: '#4A4A4A',
     marginBottom: '20px',
   },
   description: {
     fontFamily: '"Inter", sans-serif',
+    fontSize: '18px',
     color: '#4A4A4A',
-    marginBottom: '20px',
+    marginBottom: '30px',
     lineHeight: 1.8,
   },
-  valueProposition: {
-    marginBottom: '30px',
-  },
-  highlight: {
-    fontFamily: '"Gloria Hallelujah", cursive',
-    color: '#97A97C', // Sage green
-    marginBottom: '15px',
-  },
-  bulletPoints: {
-    fontFamily: '"Inter", sans-serif',
-    color: '#4A4A4A',
-    marginBottom: '20px',
-    lineHeight: 1.6,
-  },
-  quoteSection: {
-    marginTop: '20px',
+  divider: {
+    width: '60px',
+    height: '4px',
+    backgroundColor: '#97A97C',
+    margin: '20px auto',
+    borderRadius: '2px',
   },
   quote: {
     fontStyle: 'italic',
     fontFamily: '"Inter", sans-serif',
     color: '#4A4A4A',
-    marginBottom: '10px',
+    marginBottom: '30px',
   },
-  divider: {
-    margin: '20px 0',
-    backgroundColor: '#DDE6D5',
-  },
-  cta: {
-    fontFamily: '"Inter", sans-serif',
+  ctaButton: {
+    backgroundColor: '#97A97C',
+    color: '#FFFFFF',
+    padding: '12px 24px',
+    fontSize: '16px',
+    borderRadius: '8px',
     fontWeight: 'bold',
-    color: '#4A4A4A',
-    marginTop: '10px',
+    textTransform: 'none',
+    ':hover': {
+      backgroundColor: '#7B9464',
+    },
   },
 };
 
