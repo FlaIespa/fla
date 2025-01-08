@@ -1,12 +1,22 @@
 import React from 'react';
-import MainPage from '../components/MainPage'; // Correct path to MainPage.js
+import MainSection from '../components/MainSection'; // Correct path to MainSection.js
+import NewsletterSection from '../components/NewsletterSection'; // Correct path to NewsletterSection.js
+import ArtSection from '../components/ArtSection'; // Correct path to ArtSection.js
 import NewsletterForm from '../components/NewsletterForm'; // Correct path to NewsletterForm.js
 
 function HomePage() {
   return (
     <div style={styles.container}>
-      {/* Main Page Section */}
-      <MainPage />
+      {/* Main Section */}
+      <MainSection />
+
+      {/* Art Section */}
+      <ArtSection />
+
+      {/* Newsletter Section */}
+      <NewsletterSection />
+
+      
 
       {/* Newsletter Form Section */}
       <div style={styles.newsletterContainer}>
@@ -18,18 +28,18 @@ function HomePage() {
 
 const styles = {
   container: {
-    margin: 0, // No margin for the container to avoid gaps
+    margin: 0,
+    backgroundColor: '#FDF6EE', // Light beige background for the entire page
   },
   newsletterContainer: {
-    padding: '80px 60px', // Ensures larger padding but still aligned
-    backgroundColor: '#FFF4E0', // Match the warm beige background from MainPage
-    minHeight: '700px', // Ensure the section is large enough
+    padding: '80px 60px',
+    backgroundColor: '#FDF6EE', // Match the theme's beige background
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center', // Center the content
+    alignItems: 'center',
     textAlign: 'center',
-    marginTop: '0', // No margin at the top to avoid space
+    borderTop: '2px solid #DDE6D5', // Sage green separator for sections
   },
 };
 

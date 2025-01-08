@@ -18,9 +18,9 @@ function Footer() {
 const styles = {
   footer: {
     width: '100%',
-    background: '#FFF4E0', // Match the main background color
-    padding: '40px 0', // Add generous padding for better spacing
-    borderTop: '2px solid #F4A261', // Warm orange border to match the header
+    background: '#FDF6EE', // Light beige background
+    padding: '40px 0', // Generous padding for better spacing
+    borderTop: '2px solid #DDE6D5', // Sage green border to separate the footer
     textAlign: 'center',
   },
   container: {
@@ -30,13 +30,13 @@ const styles = {
   },
   text: {
     fontSize: '18px',
-    color: '#5A3E36', // Warm brown for text
+    color: '#4A4A4A', // Dark gray text for readability
     fontFamily: '"Open Sans", sans-serif', // Clean font for readability
     margin: 0,
   },
   subtext: {
     fontSize: '16px',
-    color: '#5A3E36',
+    color: '#4A4A4A', // Dark gray for a softer tone
     fontFamily: '"Gloria Hallelujah", cursive', // Fun font for a personal touch
     marginTop: '10px',
   },

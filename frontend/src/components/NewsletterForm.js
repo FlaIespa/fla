@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
+import { motion } from 'framer-motion';
 
 function NewsletterForm() {
   const [email, setEmail] = useState('');
@@ -10,15 +11,39 @@ function NewsletterForm() {
     setEmail('');
   };
 
+  // Animation variants
+  const formVariant = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1, ease: 'easeOut' },
+    },
+  };
+
+  const buttonHover = {
+    scale: 1.05,
+    backgroundColor: '#F4C7C3', // Soft peach tone for hover
+    boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.2)',
+    transition: { duration: 0.3 },
+  };
+
   return (
-    <form onSubmit={handleSubmit} style={styles.form}>
-      <h2 style={styles.heading}>Join My Newsletter</h2>
-      <p style={styles.subtext}>
-        Stay updated with stories, insights, and reflections straight to your inbox.
-      </p>
-      <div style={styles.inputContainer}>
+    <motion.form
+      onSubmit={handleSubmit}
+      style={styles.form}
+      variants={formVariant}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
+      <motion.h2 style={styles.heading}>Join My Newsletter</motion.h2>
+      <motion.p style={styles.subtext}>
+        Simplify your life with tips, stories, and reflections. Straight to your inbox.
+      </motion.p>
+      <motion.div style={styles.inputContainer}>
         <TextField
-          label="Enter your email"
+          label="Your Email"
           variant="outlined"
           fullWidth
           value={email}
@@ -31,11 +56,15 @@ function NewsletterForm() {
             },
           }}
         />
-        <Button type="submit" variant="contained" style={styles.button}>
-          Subscribe Now
-        </Button>
-      </div>
-    </form>
+        <motion.div
+          whileHover={buttonHover}
+        >
+          <Button type="submit" variant="contained" style={styles.button}>
+            Subscribe
+          </Button>
+        </motion.div>
+      </motion.div>
+    </motion.form>
   );
 }
 
@@ -45,37 +74,41 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     width: '100%',
-    padding: '80px 60px', // Larger padding for more space
-    background: '#FFF4E0', // Matches the page background
+    maxWidth: '700px', // Make it slightly wider
+    padding: '60px',
+    background: '#FFF8F1', // Slightly lighter beige
+    border: '1px solid #DCD7C9', // Soft border
+    borderRadius: '12px',
     textAlign: 'center',
+    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
+    margin: '40px auto',
   },
   heading: {
-    fontSize: '48px',
-    color: '#5A3E36',
-    fontFamily: '"Gloria Hallelujah", cursive',
+    fontSize: '36px',
+    color: '#4A4A4A',
+    fontFamily: '"Cormorant Garamond", serif', // Elegant serif font
     marginBottom: '20px',
   },
   subtext: {
-    fontSize: '20px',
-    color: '#5A3E36',
+    fontSize: '18px',
+    color: '#4A4A4A',
     fontFamily: '"Open Sans", sans-serif',
-    marginBottom: '40px',
-    maxWidth: '800px', // Wider text area
-    lineHeight: '1.8',
+    marginBottom: '30px',
+    lineHeight: '1.6',
   },
   inputContainer: {
     display: 'flex',
-    gap: '20px', // Space between the input field and the button
+    gap: '15px', // Space between input field and button
     width: '100%',
-    maxWidth: '600px', // Center the form elements
     justifyContent: 'center',
     alignItems: 'center',
   },
   input: {
     flex: 1,
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   },
   button: {
-    backgroundColor: '#F4A261',
+    backgroundColor: '#97A97C', // Sage green
     color: '#FFFFFF',
     padding: '15px 30px',
     fontSize: '16px',
@@ -85,9 +118,6 @@ const styles = {
     boxShadow: '0 6px 8px rgba(0, 0, 0, 0.1)',
     transition: 'all 0.3s ease',
     cursor: 'pointer',
-    ':hover': {
-      backgroundColor: '#E07A5F',
-    },
   },
 };
 

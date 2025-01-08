@@ -4,14 +4,17 @@ import '@fontsource/gloria-hallelujah'; // Funky font for the name
 import '@fontsource/open-sans'; // Clean font for navigation
 
 function Header() {
-  const navLinks = ["about", "newsletter", "resources"];
+  const navLinks = ["about", "newsletter", "art", "resources"];
 
   return (
     <header style={styles.header}>
+      <div style={styles.topBar}>
+        <p style={styles.topBarText}>
+          🌿 Simplify and elevate your life with creativity and reflection
+        </p>
+      </div>
       <div style={styles.container}>
-        <h1 style={styles.logoText}>
-          Fla Iespa
-        </h1>
+        <h1 style={styles.logoText}>Fla Iespa</h1>
         <nav style={styles.nav}>
           {navLinks.map((link) => (
             <Link
@@ -24,48 +27,68 @@ function Header() {
           ))}
         </nav>
       </div>
+      <div style={styles.separator}></div>
     </header>
   );
-}const styles = {
+}
+
+const styles = {
   header: {
     width: '100%',
-    backgroundColor: '#FFF4E0', // Warm beige background
-    padding: '20px 0', // Adjusted padding for alignment
-    borderBottom: '2px solid #F4A261', // Terracotta orange border
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Subtle shadow
+    backgroundColor: '#FDF6EE', // Light beige background
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Add shadow for depth
+  },
+  topBar: {
+    backgroundColor: '#DDE6D5', // Sage green bar
+    padding: '10px 0',
+    textAlign: 'center',
+  },
+  topBarText: {
+    fontSize: '14px',
+    color: '#4A4A4A', // Dark gray text
+    fontFamily: '"Open Sans", sans-serif',
   },
   container: {
-    maxWidth: '1200px', // Match the MainPage layout width
+    maxWidth: '1400px',
     margin: '0 auto',
     display: 'flex',
-    justifyContent: 'space-between', // Spread the logo and navigation
+    justifyContent: 'space-between', // Spread logo and navigation
     alignItems: 'center',
-    padding: '0 60px', // Same padding as MainPage
+    padding: '20px 40px', // Adjusted padding
   },
   logoText: {
     fontSize: '48px',
-    color: '#5A3E36', // Warm brown
-    fontFamily: '"Gloria Hallelujah", cursive',
+    color: '#4A4A4A', // Dark gray for logo
+    fontFamily: '"Gloria Hallelujah", cursive', // Personal and fun font
     margin: 0,
+    flexShrink: 0, // Prevent logo from shrinking
+    textAlign: 'left', // Explicitly align text to the left
   },
   nav: {
     display: 'flex',
-    gap: '30px', // Spacing between navigation links
+    gap: '40px', // Wider spacing between navigation links
+    flexGrow: 1, // Push navigation to fill remaining space
+    justifyContent: 'flex-end', // Align links to the right
   },
   navLink: {
     textDecoration: 'none',
-    color: '#5A3E36',
-    fontSize: '20px',
+    color: '#4A4A4A', // Dark gray for links
+    fontSize: '18px',
     fontFamily: '"Open Sans", sans-serif',
-    fontWeight: '600',
+    fontWeight: '500',
     textTransform: 'capitalize',
-    padding: '10px 15px',
-    borderRadius: '8px',
+    padding: '10px 20px', // Add padding for a button-like feel
+    borderRadius: '8px', // Rounded edges for a friendly design
     transition: 'color 0.3s ease, background-color 0.3s ease',
     ':hover': {
-      backgroundColor: '#FFF4E0',
-      color: '#FFF8E1',
+      backgroundColor: '#DDE6D5', // Sage green on hover
+      color: '#FDF6EE', // Light beige text for contrast
     },
+  },
+  separator: {
+    height: '3px',
+    backgroundColor: '#DDE6D5', // Sage green horizontal line
+    marginTop: '10px',
   },
 };
 
