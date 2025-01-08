@@ -3,6 +3,8 @@ import MainSection from '../components/MainSection'; // Correct path to MainSect
 import NewsletterSection from '../components/NewsletterSection'; // Correct path to NewsletterSection.js
 import ArtSection from '../components/ArtSection'; // Correct path to ArtSection.js
 import NewsletterForm from '../components/NewsletterForm'; // Correct path to NewsletterForm.js
+import ResourcesSection from '../components/ResourcesSection'; // Correct path to ResourcesSection.js
+
 
 function HomePage() {
   return (
@@ -22,10 +24,16 @@ function HomePage() {
         <NewsletterSection />
       </div>
 
+      {/* Resources Section */}
+      <div id="ResourcesSection">
+        <ResourcesSection />
+      </div>
+
       {/* Newsletter Form Section */}
       <div id="NewsletterForm" style={styles.newsletterContainer}>
         <NewsletterForm />
       </div>
+
     </div>
   );
 }

@@ -17,20 +17,23 @@ function NewsletterSection() {
       </Box>
 
       {/* Heading and Description */}
-      <Typography variant="h4" sx={styles.heading}>
-        Join My Creative Journey
-      </Typography>
-      <Typography variant="body1" sx={styles.description}>
-        Weekly thoughts, insights, and inspiration directly to your inbox.
-        Let’s grow together, one idea at a time.
-      </Typography>
+      <Box sx={styles.textContainer}>
+        <Typography variant="h4" sx={styles.heading}>
+          Join My Creative Journey
+        </Typography>
+        <Typography variant="body1" sx={styles.description}>
+          I've always wanted to have my own blog. After multiple attempts with Wix years ago, I now have some technical knowledge to build one of those myself.
+          My own space for exploring design, coding, and most importantly, the artist in me. If you are interested in participating in this search with me,
+          you are more than welcome.
+        </Typography>
+      </Box>
 
       {/* Divider */}
       <Divider sx={styles.divider} />
 
       {/* Subtle Quote */}
       <Typography variant="body2" sx={styles.quote}>
-        "Every journey begins with a spark of inspiration."
+        "Be yourself; everyone else is already taken." - Oscar Wilde
       </Typography>
 
       {/* Call-to-Action Button */}
@@ -56,6 +59,11 @@ const styles = {
     fontSize: '28px', // Decorative icon
     marginBottom: '20px',
     color: '#97A97C', // Sage green
+  },
+  textContainer: {
+    maxWidth: '800px', // Limit the width of the text to 800px
+    margin: '0 auto', // Center the container horizontally
+    textAlign: 'center', // Keep the text aligned in the center
   },
   heading: {
     fontFamily: '"Gloria Hallelujah", cursive',

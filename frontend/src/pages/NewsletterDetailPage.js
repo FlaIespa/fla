@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import supabase from '../supabase'; // Import Supabase client
 
 function NewsletterDetailPage() {
   const { newsletterId } = useParams(); // Get the dynamic route parameter
   const [newsletter, setNewsletter] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchNewsletter = async () => {
@@ -27,6 +29,15 @@ function NewsletterDetailPage() {
 
     fetchNewsletter();
   }, [newsletterId]);
+  const handleSubscribeClick = () => {
+    navigate('/#NewsletterForm');
+    setTimeout(() => {
+      const element = document.getElementById('NewsletterForm');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 200); // Add a slight delay to ensure navigation completes
+  };
 
   if (loading) {
     return (
@@ -68,7 +79,7 @@ function NewsletterDetailPage() {
 
         {/* Call-to-Action Button */}
         <Box sx={styles.ctaContainer}>
-          <Button sx={styles.ctaButton} href="#newsletter-subscribe">
+        <Button sx={styles.ctaButton} onClick={handleSubscribeClick}>
             Subscribe to the Newsletter
           </Button>
         </Box>

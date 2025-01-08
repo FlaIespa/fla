@@ -1,79 +1,85 @@
-import React from 'react';
-import Slider from 'react-slick';
-import { Box, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Typography, Modal, IconButton } from '@mui/material';
 import { motion } from 'framer-motion'; // For animations
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import CloseIcon from '@mui/icons-material/Close';
 
 function ArtSection() {
-    const cards = [
-        { image: '/images/image1.jpeg', caption: 'Pier 39 in Christmas season' },
-        { image: '/images/image2.jpeg', caption: 'Sunrise at Twin Peaks' },
-        { image: '/images/image3.jpeg', caption: 'Home food away from home' },
-        { image: '/images/image4.jpeg', caption: 'Bay Bridge from Google Deep Mind' },
-        { image: '/images/image5.jpeg', caption: 'SF Symphony' },
-        { image: '/images/image6.jpeg', caption: 'Pier 39 after a run on a sunny day' },
-        { image: '/images/image7.jpeg', caption: 'Sunset at Ocean Beach' },
-        { image: '/images/image8.jpeg', caption: 'Break Dance in Embarcardero' },
-        { image: '/images/image9.jpeg', caption: 'View from my window' },
-        { image: '/images/image10.jpeg', caption: 'Home food away from home, part 2' },
-        { image: '/images/image11.jpeg', caption: 'Public library square' },
-        // { image: '/images/image12.jpeg', caption: 'Charming village streets' },
-        { image: '/images/image13.jpeg', caption: 'Capitola Beach' },
-        // { image: '/images/image14.jpeg', caption: 'Tranquil river reflections' },
-        { image: '/images/image15.jpeg', caption: 'Golden Gate Bridge from NYE trail' },
-        { image: '/images/image16.jpeg', caption: 'Candies I will bring my niece to try' },
-      ];
+  const [selectedImage, setSelectedImage] = useState(null); // State to manage the selected image
+  const cards = [
+    { image: '/images/image1.jpeg', caption: 'Pier 39 in Christmas season' },
+    { image: '/images/image2.jpeg', caption: 'Sunrise at Twin Peaks' },
+    { image: '/images/image3.jpeg', caption: 'Home food away from home' },
+    { image: '/images/image4.jpeg', caption: 'Bay Bridge from Google Deep Mind' },
+    { image: '/images/image5.jpeg', caption: 'SF Symphony' },
+    { image: '/images/image6.jpeg', caption: 'Pier 39 after a run on a sunny day' },
+    { image: '/images/image7.jpeg', caption: 'Sunset at Ocean Beach' },
+    { image: '/images/image8.jpeg', caption: 'Break Dance in Embarcadero' },
+    { image: '/images/image9.jpeg', caption: 'View from my window' },
+    { image: '/images/image10.jpeg', caption: 'Home food away from home, part 2' },
+    { image: '/images/image11.jpeg', caption: 'Public library square' },
+    { image: '/images/image13.jpeg', caption: 'Capitola Beach' },
+    { image: '/images/image15.jpeg', caption: 'Golden Gate Bridge from NYE trail' },
+    { image: '/images/image16.jpeg', caption: 'Candies I will bring my niece to try' },
+  ];
 
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5, // Show 8 cards at a time
-    slidesToScroll: 1, // Scroll one at a time
-    responsive: [
-      {
-        breakpoint: 1024, // Tablet
-        settings: {
-          slidesToShow: 4,
-        },
-      },
-      {
-        breakpoint: 600, // Mobile
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-    ],
+  const handleOpenModal = (card) => {
+    setSelectedImage(card); // Set the selected image
+  };
+
+  const handleCloseModal = () => {
+    setSelectedImage(null); // Clear the selected image
   };
 
   return (
     <Box sx={styles.container}>
       <Typography variant="h4" sx={styles.heading}>
-        The Art in me
+        The Art in Me
       </Typography>
 
-      {/* Carousel */}
+      {/* Horizontal Scrollable Gallery */}
       <Box sx={styles.sliderContainer}>
-        <Slider {...sliderSettings}>
-          {cards.map((card, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+        {cards.map((card, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            style={styles.cardContainer}
+          >
+            <Box
+              sx={styles.card}
+              onClick={() => handleOpenModal(card)} // Open modal on click
             >
-              <Box sx={styles.card}>
-                <img src={card.image} alt={card.caption} style={styles.image} />
-                <Typography variant="body1" sx={styles.caption}>
-                  {card.caption}
-                </Typography>
-              </Box>
-            </motion.div>
-          ))}
-        </Slider>
+              <img src={card.image} alt={card.caption} style={styles.image} />
+              <Typography variant="body1" sx={styles.caption}>
+                {card.caption}
+              </Typography>
+            </Box>
+          </motion.div>
+        ))}
       </Box>
+
+      {/* Modal for Expanded Image */}
+      <Modal open={!!selectedImage} onClose={handleCloseModal}>
+        <Box sx={styles.modalContainer}>
+          <IconButton sx={styles.closeButton} onClick={handleCloseModal}>
+            <CloseIcon />
+          </IconButton>
+          {selectedImage && (
+            <>
+              <img
+                src={selectedImage.image}
+                alt={selectedImage.caption}
+                style={styles.modalImage}
+              />
+              <Typography variant="h6" sx={styles.modalCaption}>
+                {selectedImage.caption}
+              </Typography>
+            </>
+          )}
+        </Box>
+      </Modal>
     </Box>
   );
 }
@@ -81,7 +87,7 @@ function ArtSection() {
 const styles = {
   container: {
     backgroundColor: '#FDF6EE',
-    padding: '60px 0',
+    padding: '60px 20px',
     textAlign: 'center',
   },
   heading: {
@@ -91,9 +97,19 @@ const styles = {
     marginBottom: '40px',
   },
   sliderContainer: {
-    width: '100%', // Take up the full width of the page
-    maxWidth: '100%',
-    margin: '0 auto',
+    display: 'flex',
+    overflowX: 'auto',
+    scrollSnapType: 'x mandatory',
+    gap: '20px',
+    padding: '10px 0',
+    scrollbarWidth: 'none',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
+  },
+  cardContainer: {
+    flexShrink: 0,
+    scrollSnapAlign: 'start',
   },
   card: {
     backgroundColor: '#FFF',
@@ -101,7 +117,9 @@ const styles = {
     borderRadius: '12px',
     textAlign: 'center',
     padding: '15px',
-    margin: '10px',
+    minWidth: '400px',
+    maxWidth: '400px',
+    cursor: 'pointer', // Add cursor to indicate clickability
   },
   image: {
     height: '400px',
@@ -115,6 +133,41 @@ const styles = {
     fontSize: '14px',
     color: '#4A4A4A',
     marginTop: '10px',
+  },
+  modalContainer: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#FFFFFF',
+    padding: '20px',
+    borderRadius: '12px',
+    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
+    textAlign: 'center',
+    maxWidth: '90%',
+    maxHeight: '90%',
+    overflow: 'auto',
+  },
+  modalImage: {
+    width: '100%',
+    height: 'auto',
+    borderRadius: '8px',
+    marginBottom: '20px',
+  },
+  modalCaption: {
+    fontFamily: '"Inter", sans-serif',
+    fontSize: '16px',
+    color: '#4A4A4A',
+  },
+  closeButton: {
+    position: 'absolute',
+    top: '10px',
+    right: '10px',
+    backgroundColor: '#FFFFFF',
+    color: '#4A4A4A',
+    ':hover': {
+      backgroundColor: '#F5F5F5',
+    },
   },
 };
 
