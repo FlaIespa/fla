@@ -87,7 +87,7 @@ function ArtSection() {
 const styles = {
   container: {
     backgroundColor: '#FDF6EE',
-    padding: '40px 10px',
+    padding: '10px 10px',
     textAlign: 'center',
   },
   heading: {
