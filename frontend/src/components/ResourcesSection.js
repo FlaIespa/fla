@@ -121,7 +121,7 @@ function ResourcesSection() {
 const styles = {
   container: {
     backgroundColor: '#FDF6EE',
-    padding: '40px 150px', // Further reduced padding
+    padding: '40px 350px', // Further reduced padding
     textAlign: 'center',
   },
   heading: {
@@ -137,7 +137,7 @@ const styles = {
     marginBottom: '20px',
   },
   card: {
-    backgroundColor: '#FAF2E8',
+    backgroundColor: '#97A97C',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Softer shadow
     borderRadius: '10px', // Slightly sharper corners
     padding: '15px', // Reduced padding
@@ -156,19 +156,19 @@ const styles = {
   cardTitle: {
     fontFamily: '"Gloria Hallelujah", cursive',
     fontSize: '16px', // Reduced size
-    color: '#4A4A4A',
+    color: '#FFFFFF',
     marginBottom: '8px',
   },
   cardText: {
     fontFamily: '"Inter", sans-serif',
     fontSize: '12px', // Smaller text
-    color: '#4A4A4A',
+    color: '#FFFFFF',
     marginBottom: '8px',
   },
   supportDetail: {
     fontFamily: '"Inter", sans-serif',
     fontSize: '12px', // Matching smaller text
-    color: '#4A4A4A',
+    color: '#FFFFFF',
     fontWeight: 'bold',
   },
   generalText: {
