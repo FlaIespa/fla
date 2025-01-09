@@ -178,12 +178,14 @@ const styles = {
     marginBottom: '15px',
   },
   link: {
-    color: '#FFFFFF',
+    color: '#000000',
     fontWeight: 'bold',
+    fontSize: '12px',
     textDecoration: 'none',
     ':hover': {
       textDecoration: 'underline',
     },
+    
   },
   ctaButton: {
     backgroundColor: '#97A97C',

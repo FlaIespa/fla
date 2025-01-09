@@ -33,7 +33,7 @@ function NewsletterForm() {
         Subscribe to My Newsletter
       </Typography>
       <Typography variant="body2" sx={styles.description}>
-        Join my creative journey and get updates directly in your inbox!
+        Join my creative journey and get updates on where my mind and heart are at (usually in different places)
       </Typography>
       <form onSubmit={handleSubscribe} style={styles.form}>
         <TextField
