@@ -60,6 +60,14 @@ function ArtSection() {
         ))}
       </Box>
 
+      {/* Scroll Indicator */}
+      <Box sx={styles.scrollHint}>
+        <Typography variant="body2" sx={styles.scrollText}>
+          Scroll for more
+        </Typography>
+        <span style={styles.arrow}>➔</span>
+      </Box>
+
       {/* Modal for Expanded Image */}
       <Modal open={!!selectedImage} onClose={handleCloseModal}>
         <Box sx={styles.modalContainer}>
@@ -92,7 +100,7 @@ const styles = {
   },
   heading: {
     fontFamily: '"Gloria Hallelujah", cursive',
-    fontSize: '24px', // Reduced size
+    fontSize: '24px',
     color: '#4A4A4A',
     marginBottom: '20px',
   },
@@ -113,16 +121,16 @@ const styles = {
   },
   card: {
     backgroundColor: '#FFF',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Softer shadow
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     borderRadius: '8px',
     textAlign: 'center',
     padding: '10px',
-    minWidth: '300px', // Smaller cards
+    minWidth: '300px',
     maxWidth: '300px',
     cursor: 'pointer',
   },
   image: {
-    height: '250px', // Reduced image height
+    height: '250px',
     objectFit: 'cover',
     borderRadius: '6px',
     width: '100%',
@@ -130,9 +138,25 @@ const styles = {
   },
   caption: {
     fontFamily: '"Inter", sans-serif',
-    fontSize: '12px', // Reduced caption font
+    fontSize: '12px',
     color: '#4A4A4A',
     marginTop: '5px',
+  },
+  scrollHint: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '10px',
+    color: '#97A97C',
+  },
+  scrollText: {
+    fontFamily: '"Inter", sans-serif',
+    fontSize: '12px',
+    marginRight: '5px',
+  },
+  arrow: {
+    fontSize: '14px',
+    color: '#97A97C',
   },
   modalContainer: {
     position: 'absolute',
@@ -156,7 +180,7 @@ const styles = {
   },
   modalCaption: {
     fontFamily: '"Inter", sans-serif',
-    fontSize: '14px', // Reduced modal caption font
+    fontSize: '14px',
     color: '#4A4A4A',
   },
   closeButton: {
