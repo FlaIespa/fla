@@ -96,7 +96,7 @@ const styles = {
     backgroundColor: '#97A97C',
     color: '#FFFFFF',
     padding: '8px 16px', // Reduced padding
-    fontSize: '14px', // Reduced font size
+    fontSize: '10px', // Reduced font size
     borderRadius: '6px',
     fontWeight: 'bold',
     textTransform: 'none',

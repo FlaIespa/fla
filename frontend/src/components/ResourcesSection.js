@@ -189,7 +189,7 @@ const styles = {
     backgroundColor: '#97A97C',
     color: '#FFFFFF',
     padding: '8px 16px', // Smaller button
-    fontSize: '12px', // Reduced size
+    fontSize: '10px', // Reduced size
     borderRadius: '6px', // Smaller border radius
     fontWeight: 'bold',
     textTransform: 'none',
