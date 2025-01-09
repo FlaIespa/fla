@@ -31,7 +31,7 @@ function NewslettersPage() {
           My Newsletters
         </Typography>
         <Typography variant="body1" sx={styles.description}>
-          Dive into my world of creativity, growth, and reflections. Explore past editions of my newsletters and join the journey!
+          Dive into my reflections. Open invite to reflect with me. 
         </Typography>
         <Box sx={styles.newslettersContainer}>
           {newsletters.map((newsletter) => (
@@ -66,13 +66,13 @@ const styles = {
   },
   heading: {
     fontFamily: '"Gloria Hallelujah", cursive',
-    fontSize: '36px',
+    fontSize: '28px',
     color: '#4A4A4A',
     marginBottom: '20px',
   },
   description: {
     fontFamily: '"Inter", sans-serif',
-    fontSize: '18px',
+    fontSize: '14px',
     color: '#4A4A4A',
     marginBottom: '40px',
     lineHeight: 1.8,

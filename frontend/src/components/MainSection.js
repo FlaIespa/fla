@@ -5,7 +5,7 @@ import plantsAnimation from '../assets/animations/plants.json';
 import { motion } from 'framer-motion';
 import '@fontsource/gloria-hallelujah';
 import '@fontsource/open-sans';
-import { Link } from 'react-router-dom'; // Import Link from React Router
+import { Link } from 'react-router-dom';
 
 function MainSection() {
   const containerVariant = {
@@ -15,8 +15,8 @@ function MainSection() {
       transition: {
         delay: 0.2,
         duration: 1,
-        when: "beforeChildren", // Animate children after the container
-        staggerChildren: 0.3, // Stagger animations for child elements
+        when: 'beforeChildren',
+        staggerChildren: 0.3,
       },
     },
   };
@@ -31,7 +31,7 @@ function MainSection() {
     autoplay: true,
     animationData: plantsAnimation,
     rendererSettings: {
-      preserveAspectRatio: 'none', // Ensure animation scales properly
+      preserveAspectRatio: 'none',
     },
   };
 
@@ -49,7 +49,7 @@ function MainSection() {
           variants={itemVariant}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }} // Trigger animation when 50% in view
+          viewport={{ once: true, amount: 0.5 }}
         >
           <motion.h2 style={styles.subheading} variants={itemVariant}>
             EXPLORER | WRITER | CODER
@@ -58,11 +58,9 @@ function MainSection() {
             Hello, I’m Fla!
           </motion.h1>
           <motion.p style={styles.description} variants={itemVariant}>
-            Welcome to my cozy corner of reflection. This is chance for me to share what 
-            is alive for me for me, how it is a culmination of my life so far and plans for the future. 
-            It's a little blog if blogs still existed. 
-            After a CS Degree, it's my chance to let the artist, spiritual being come to life. 
-            Welcome to a little corner of my soul. 
+            Welcome to my cozy corner of reflection. This is a chance for me to share what’s alive
+            for me, how it is a culmination of my life so far, and plans for the future. Welcome to
+            a little corner of my soul.
           </motion.p>
           <motion.div variants={itemVariant}>
             <Button
@@ -82,9 +80,9 @@ function MainSection() {
           variants={itemVariant}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }} // Trigger animation when 50% in view
+          viewport={{ once: true, amount: 0.5 }}
         >
-          <Lottie options={lottieOptions} height="100%" width="100%" />
+        <Lottie options={lottieOptions} height={750} width={450}></Lottie>
         </motion.div>
       </Box>
     </motion.div>
@@ -96,23 +94,22 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100vh', // Full viewport height
+    height: '80vh', // Reduced height
     backgroundColor: '#FDF6EE',
-    overflow: 'hidden', // Hide overflow for animations
+    overflow: 'hidden',
   },
   contentWrapper: {
     display: 'flex',
-    maxWidth: '1400px', // Increase the maximum width for the entire section
+    maxWidth: '1100px', // Reduced max width
     width: '100%',
     alignItems: 'center',
-    justifyContent: 'space-around', // Provide more balanced spacing between text and animation
-    gap: '20px', // Add spacing between the two columns
-    height: '100%', // Ensure the height is consistent with the parent container
-    padding: '0 40px', // Add padding consistent with the header
+    justifyContent: 'space-around',
+    gap: '10px', // Reduced gap between text and animation
+    padding: '0 20px',
   },
   textSection: {
     flex: 1,
-    paddingRight: '20px',
+    paddingRight: '10px', // Reduced padding
   },
   animationContainer: {
     flex: 1,
@@ -124,36 +121,35 @@ const styles = {
     height: '100%',
   },
   subheading: {
-    fontSize: '20px',
-    fontWeight: '700',
-    textTransform: 'uppercase',
-    letterSpacing: '2px',
-    color: '#97A97C', // Sage green
-    marginBottom: '20px',
+    fontSize: '12px', // Smaller subheading
+    fontWeight: '600',
+    letterSpacing: '1.5px',
+    color: '#97A97C',
+    marginBottom: '10px',
     fontFamily: '"Open Sans", sans-serif',
   },
   greeting: {
-    fontSize: '68px',
+    fontSize: '32px', // Smaller greeting text
     color: '#4A4A4A',
-    marginBottom: '30px',
+    marginBottom: '20px',
     fontFamily: '"Gloria Hallelujah", cursive',
   },
   description: {
-    fontSize: '22px',
+    fontSize: '14px', // Smaller paragraph font size
     color: '#4A4A4A',
     fontFamily: '"Open Sans", sans-serif',
-    lineHeight: '1.8',
-    marginBottom: '40px',
+    lineHeight: 1.6, // Reduced line height
+    marginBottom: '20px',
   },
   button: {
     backgroundColor: '#97A97C',
     color: '#FFFFFF',
-    padding: '16px 32px',
-    fontSize: '18px',
-    borderRadius: '8px',
+    padding: '8px 16px', // Smaller padding
+    fontSize: '12px', // Reduced font size
+    borderRadius: '4px',
     textTransform: 'none',
-    fontWeight: 'bold',
-    boxShadow: '0 6px 8px rgba(0, 0, 0, 0.1)',
+    fontWeight: '500',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
   },
 };
 

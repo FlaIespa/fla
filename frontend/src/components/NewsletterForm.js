@@ -29,18 +29,20 @@ function NewsletterForm() {
 
   return (
     <Box sx={styles.container}>
-      <Typography variant="h4" sx={styles.heading}>
+      <Typography variant="h6" sx={styles.heading}>
         Subscribe to My Newsletter
+      </Typography>
+      <Typography variant="body2" sx={styles.description}>
+        Join my creative journey and get updates directly in your inbox!
       </Typography>
       <form onSubmit={handleSubscribe} style={styles.form}>
         <TextField
           type="email"
-          label="Your Email"
+          placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           variant="outlined"
           required
-          fullWidth
           sx={styles.input}
         />
         <Button type="submit" variant="contained" sx={styles.button}>
@@ -63,29 +65,48 @@ const styles = {
     textAlign: 'center',
     padding: '20px',
     backgroundColor: '#FDF6EE',
-    borderRadius: '8px',
+    borderRadius: '6px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    maxWidth: '400px',
+    margin: '0 auto',
   },
   heading: {
     fontFamily: '"Gloria Hallelujah", cursive',
     color: '#4A4A4A',
+    marginBottom: '10px',
+    fontSize: '20px',
+  },
+  description: {
+    fontFamily: '"Inter", sans-serif',
+    color: '#4A4A4A',
+    fontSize: '12px',
     marginBottom: '20px',
   },
   form: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '10px',
     alignItems: 'center',
+    gap: '10px',
   },
   input: {
-    maxWidth: '400px',
+    width: '100%',
+    '& .MuiOutlinedInput-root': {
+      borderRadius: '6px',
+      fontSize: '12px', // Smaller font size for a cleaner look
+    },
+    '& .MuiInputLabel-root': {
+      fontSize: '12px',
+    },
+    '& .MuiInputBase-input': {
+      padding: '10px', // Adjust padding for compact input
+    },
   },
   button: {
     backgroundColor: '#97A97C',
     color: '#FFFFFF',
-    padding: '10px 20px',
-    fontSize: '16px',
-    borderRadius: '8px',
+    padding: '8px 16px',
+    fontSize: '10px',
+    borderRadius: '6px',
     ':hover': {
       backgroundColor: '#7B9464',
     },
@@ -93,10 +114,12 @@ const styles = {
   successMessage: {
     color: '#28A745',
     marginTop: '10px',
+    fontSize: '12px',
   },
   errorMessage: {
     color: '#DC3545',
     marginTop: '10px',
+    fontSize: '12px',
   },
 };
 

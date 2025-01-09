@@ -6,7 +6,7 @@ function ResourcesSection() {
   return (
     <Box id="ResourcesSection" sx={styles.container}>
       {/* Section Heading */}
-      <Typography variant="h4" sx={styles.heading}>
+      <Typography variant="h5" sx={styles.heading}>
         Support and Collaborate
       </Typography>
 
@@ -24,7 +24,7 @@ function ResourcesSection() {
           <Typography variant="h6" sx={styles.cardTitle}>
             Professional Portfolio
           </Typography>
-          <Typography variant="body1" sx={styles.cardText}>
+          <Typography variant="body2" sx={styles.cardText}>
             Discover my coding projects and journey.
           </Typography>
           <Link
@@ -49,7 +49,7 @@ function ResourcesSection() {
           <Typography variant="h6" sx={styles.cardTitle}>
             Support via Zelle
           </Typography>
-          <Typography variant="body1" sx={styles.cardText}>
+          <Typography variant="body2" sx={styles.cardText}>
             Send contributions directly to:
           </Typography>
           <Typography variant="body2" sx={styles.supportDetail}>
@@ -69,7 +69,7 @@ function ResourcesSection() {
           <Typography variant="h6" sx={styles.cardTitle}>
             Support via Venmo
           </Typography>
-          <Typography variant="body1" sx={styles.cardText}>
+          <Typography variant="body2" sx={styles.cardText}>
             Contribute with ease using Venmo:
           </Typography>
           <Typography variant="body2" sx={styles.supportDetail}>
@@ -89,7 +89,7 @@ function ResourcesSection() {
           <Typography variant="h6" sx={styles.cardTitle}>
             Support via Pix (Brazil)
           </Typography>
-          <Typography variant="body1" sx={styles.cardText}>
+          <Typography variant="body2" sx={styles.cardText}>
             Use Pix to support my journey:
           </Typography>
           <Typography variant="body2" sx={styles.supportDetail}>
@@ -120,62 +120,62 @@ function ResourcesSection() {
 
 const styles = {
   container: {
-    backgroundColor: '#FDF6EE', // Match overall theme
-    padding: '80px 40px',
+    backgroundColor: '#FDF6EE',
+    padding: '40px 150px', // Further reduced padding
     textAlign: 'center',
   },
   heading: {
     fontFamily: '"Gloria Hallelujah", cursive',
-    fontSize: '36px',
+    fontSize: '24px', // Further reduced size
     color: '#4A4A4A',
-    marginBottom: '50px',
+    marginBottom: '20px',
   },
   grid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-    gap: '30px',
-    marginBottom: '50px',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', // Smaller cards
+    gap: '15px', // Reduced gap
+    marginBottom: '20px',
   },
   card: {
-    backgroundColor: '#FAF2E8', // Soft muted beige
-    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)', // Lighter shadow
-    borderRadius: '16px',
-    padding: '30px',
+    backgroundColor: '#FAF2E8',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Softer shadow
+    borderRadius: '10px', // Slightly sharper corners
+    padding: '15px', // Reduced padding
     textAlign: 'center',
-    transition: 'transform 0.3s ease-in-out, background-color 0.3s ease',
+    transition: 'transform 0.3s ease, background-color 0.3s ease',
     ':hover': {
-      transform: 'scale(1.05)',
-      backgroundColor: '#F7EAD6', // Slightly darker beige on hover
+      transform: 'scale(1.03)',
+      backgroundColor: '#F7EAD6',
     },
   },
   icon: {
-    fontSize: '48px',
-    marginBottom: '20px',
-    color: '#97A97C', // Sage green for icons
+    fontSize: '24px', // Reduced icon size
+    marginBottom: '10px',
+    color: '#97A97C',
   },
   cardTitle: {
     fontFamily: '"Gloria Hallelujah", cursive',
-    fontSize: '22px',
+    fontSize: '16px', // Reduced size
     color: '#4A4A4A',
-    marginBottom: '15px',
+    marginBottom: '8px',
   },
   cardText: {
     fontFamily: '"Inter", sans-serif',
-    fontSize: '16px',
+    fontSize: '12px', // Smaller text
     color: '#4A4A4A',
-    marginBottom: '15px',
+    marginBottom: '8px',
   },
   supportDetail: {
     fontFamily: '"Inter", sans-serif',
-    fontSize: '14px',
+    fontSize: '12px', // Matching smaller text
     color: '#4A4A4A',
     fontWeight: 'bold',
   },
   generalText: {
     fontFamily: '"Inter", sans-serif',
-    fontSize: '16px',
+    fontSize: '12px', // Reduced size
     color: '#4A4A4A',
-    marginBottom: '30px',
+    marginBottom: '15px',
   },
   link: {
     color: '#97A97C',
@@ -188,9 +188,9 @@ const styles = {
   ctaButton: {
     backgroundColor: '#97A97C',
     color: '#FFFFFF',
-    padding: '14px 28px',
-    fontSize: '18px',
-    borderRadius: '12px',
+    padding: '8px 16px', // Smaller button
+    fontSize: '12px', // Reduced size
+    borderRadius: '6px', // Smaller border radius
     fontWeight: 'bold',
     textTransform: 'none',
     ':hover': {

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Box, Typography, Modal, IconButton } from '@mui/material';
-import { motion } from 'framer-motion'; // For animations
+import { motion } from 'framer-motion';
 import CloseIcon from '@mui/icons-material/Close';
 
 function ArtSection() {
-  const [selectedImage, setSelectedImage] = useState(null); // State to manage the selected image
+  const [selectedImage, setSelectedImage] = useState(null);
   const cards = [
     { image: '/images/image1.jpeg', caption: 'Pier 39 in Christmas season' },
     { image: '/images/image2.jpeg', caption: 'Sunrise at Twin Peaks' },
@@ -23,16 +23,16 @@ function ArtSection() {
   ];
 
   const handleOpenModal = (card) => {
-    setSelectedImage(card); // Set the selected image
+    setSelectedImage(card);
   };
 
   const handleCloseModal = () => {
-    setSelectedImage(null); // Clear the selected image
+    setSelectedImage(null);
   };
 
   return (
     <Box sx={styles.container}>
-      <Typography variant="h4" sx={styles.heading}>
+      <Typography variant="h5" sx={styles.heading}>
         The Art in Me
       </Typography>
 
@@ -49,10 +49,10 @@ function ArtSection() {
           >
             <Box
               sx={styles.card}
-              onClick={() => handleOpenModal(card)} // Open modal on click
+              onClick={() => handleOpenModal(card)}
             >
               <img src={card.image} alt={card.caption} style={styles.image} />
-              <Typography variant="body1" sx={styles.caption}>
+              <Typography variant="body2" sx={styles.caption}>
                 {card.caption}
               </Typography>
             </Box>
@@ -73,7 +73,7 @@ function ArtSection() {
                 alt={selectedImage.caption}
                 style={styles.modalImage}
               />
-              <Typography variant="h6" sx={styles.modalCaption}>
+              <Typography variant="body2" sx={styles.modalCaption}>
                 {selectedImage.caption}
               </Typography>
             </>
@@ -87,21 +87,21 @@ function ArtSection() {
 const styles = {
   container: {
     backgroundColor: '#FDF6EE',
-    padding: '60px 20px',
+    padding: '40px 10px',
     textAlign: 'center',
   },
   heading: {
     fontFamily: '"Gloria Hallelujah", cursive',
-    fontSize: '36px',
+    fontSize: '24px', // Reduced size
     color: '#4A4A4A',
-    marginBottom: '40px',
+    marginBottom: '20px',
   },
   sliderContainer: {
     display: 'flex',
     overflowX: 'auto',
     scrollSnapType: 'x mandatory',
-    gap: '20px',
-    padding: '10px 0',
+    gap: '10px',
+    padding: '5px 0',
     scrollbarWidth: 'none',
     '&::-webkit-scrollbar': {
       display: 'none',
@@ -113,26 +113,26 @@ const styles = {
   },
   card: {
     backgroundColor: '#FFF',
-    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.15)',
-    borderRadius: '12px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Softer shadow
+    borderRadius: '8px',
     textAlign: 'center',
-    padding: '15px',
-    minWidth: '400px',
-    maxWidth: '400px',
-    cursor: 'pointer', // Add cursor to indicate clickability
+    padding: '10px',
+    minWidth: '300px', // Smaller cards
+    maxWidth: '300px',
+    cursor: 'pointer',
   },
   image: {
-    height: '400px',
+    height: '250px', // Reduced image height
     objectFit: 'cover',
-    borderRadius: '8px',
+    borderRadius: '6px',
     width: '100%',
-    marginBottom: '10px',
+    marginBottom: '5px',
   },
   caption: {
     fontFamily: '"Inter", sans-serif',
-    fontSize: '14px',
+    fontSize: '12px', // Reduced caption font
     color: '#4A4A4A',
-    marginTop: '10px',
+    marginTop: '5px',
   },
   modalContainer: {
     position: 'absolute',
@@ -140,23 +140,23 @@ const styles = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     backgroundColor: '#FFFFFF',
-    padding: '20px',
-    borderRadius: '12px',
-    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
+    padding: '15px',
+    borderRadius: '10px',
+    boxShadow: '0 6px 12px rgba(0, 0, 0, 0.2)',
     textAlign: 'center',
-    maxWidth: '90%',
-    maxHeight: '90%',
+    maxWidth: '80%',
+    maxHeight: '80%',
     overflow: 'auto',
   },
   modalImage: {
     width: '100%',
     height: 'auto',
-    borderRadius: '8px',
-    marginBottom: '20px',
+    borderRadius: '6px',
+    marginBottom: '15px',
   },
   modalCaption: {
     fontFamily: '"Inter", sans-serif',
-    fontSize: '16px',
+    fontSize: '14px', // Reduced modal caption font
     color: '#4A4A4A',
   },
   closeButton: {
