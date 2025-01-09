@@ -84,7 +84,7 @@ function MainSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
         >
-        <Lottie options={lottieOptions} height={750} width={450}></Lottie>
+        <Lottie options={lottieOptions} height={650} width={350}></Lottie>
         </motion.div>
       </Box>
     </motion.div>

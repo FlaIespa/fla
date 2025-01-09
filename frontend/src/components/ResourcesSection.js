@@ -121,7 +121,7 @@ function ResourcesSection() {
 const styles = {
   container: {
     backgroundColor: '#FDF6EE',
-    padding: '40px 350px', // Further reduced padding
+    padding: '40px 250px', // Further reduced padding
     textAlign: 'center',
   },
   heading: {
