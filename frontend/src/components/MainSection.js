@@ -58,9 +58,11 @@ function MainSection() {
             Hello, I’m Fla!
           </motion.h1>
           <motion.p style={styles.description} variants={itemVariant}>
-            Welcome to my cozy corner of reflection. This is a chance for me to share what’s alive
-            for me, how it is a culmination of my life so far, and plans for the future. Welcome to
-            a little corner of my soul.
+          Welcome to my cozy corner of reflection. This is chance for me to share what 
+            is alive for me for me, how it is a culmination of my life so far and plans for the future. 
+            It's a little blog if blogs still existed. 
+            After a CS Degree, it's my chance to let the artist, spiritual being come to life. 
+            Welcome to a little corner of my soul. 
           </motion.p>
           <motion.div variants={itemVariant}>
             <Button
