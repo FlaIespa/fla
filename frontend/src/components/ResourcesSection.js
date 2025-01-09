@@ -178,7 +178,7 @@ const styles = {
     marginBottom: '15px',
   },
   link: {
-    color: '#97A97C',
+    color: '#FFFFFF',
     fontWeight: 'bold',
     textDecoration: 'none',
     ':hover': {
