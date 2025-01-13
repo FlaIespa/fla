@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link as ScrollLink } from 'react-scroll'; // For smooth scrolling
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // For routing to other pages
 import '@fontsource/gloria-hallelujah';
 import '@fontsource/open-sans';
 
 function Header() {
-  const navigate = useNavigate(); // Hook for navigation
-
   return (
     <header style={styles.header}>
       <div style={styles.topBar}>
@@ -17,23 +15,28 @@ function Header() {
       <div style={styles.container}>
         <h1
           style={styles.logoText}
-          onClick={() => navigate('/')}
+          onClick={() => window.location.href = '/'} // Direct navigation on logo click
         >
           Fla Iespa
         </h1>
         <nav style={styles.nav}>
+          {/* ScrollLink for smooth scrolling */}
           <ScrollLink to="MainSection" smooth duration={800} offset={-50} style={styles.navLink}>
             About
           </ScrollLink>
           <ScrollLink to="ArtSection" smooth duration={800} offset={-50} style={styles.navLink}>
             Art
           </ScrollLink>
-          <ScrollLink to="NewsletterSection" smooth duration={800} offset={-50} style={styles.navLink}>
-            Newsletter
-          </ScrollLink>
+          <Link to="/newsletters" style={styles.navLink}>
+            Newsletters
+          </Link>
           <ScrollLink to="ResourcesSection" smooth duration={800} offset={-50} style={styles.navLink}>
             Resources
           </ScrollLink>
+          {/* Link for routing to Poems page */}
+          <Link to="/poems" style={styles.navLink}>
+            Poems
+          </Link>
         </nav>
       </div>
       <div style={styles.separator}></div>
