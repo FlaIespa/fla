@@ -42,7 +42,7 @@ const styles = {
     borderRadius: '8px', // Smaller border radius
     boxShadow: '0 3px 6px rgba(0, 0, 0, 0.1)', // Lighter shadow
     textAlign: 'left',
-    maxWidth: '700px', // Reduced max width
+    width: '600px', // Reduced max width
     margin: '0 auto',
   },
   title: {
