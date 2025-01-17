@@ -69,11 +69,14 @@ const styles = {
     marginBottom: '20px',
   },
   poemsContainer: {
-    display: 'flex',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', // Responsive grid
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)', // Forces exactly 3 columns
     gap: '20px',
     paddingBottom: '40px',
+    width: '100%', // Ensures container takes full width
+    maxWidth: '1200px', // Optional: prevents cards from getting too wide on large screens
   },
+
   poemCard: {
     backgroundColor: '#FDF6EE', // Beige background for the card
     padding: '20px',
