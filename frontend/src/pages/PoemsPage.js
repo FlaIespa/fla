@@ -1,23 +1,48 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, Divider, Button } from '@mui/material';
+import { Box, Typography, Divider, Button, IconButton } from '@mui/material';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom'; // For navigation
-import supabase from '../supabase'; // Your supabase.js file
+import { Link } from 'react-router-dom';
+import { ArrowDropDown } from '@mui/icons-material';
+import supabase from '../supabase';
 
 function PoemsPage() {
   const [poems, setPoems] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const pageSize = 9;
 
   useEffect(() => {
-    const fetchPoems = async () => {
-      const { data, error } = await supabase.from('poems').select('*');
-      if (error) {
-        console.error('Error fetching poems:', error);
-      } else {
-        setPoems(data);
-      }
-    };
-    fetchPoems();
+    fetchPoems(1, true);
   }, []);
+
+  const fetchPoems = async (pageNumber, reset = false) => {
+    setLoading(true);
+    const start = (pageNumber - 1) * pageSize;
+    const end = start + pageSize - 1;
+
+    const { data, error } = await supabase
+      .from('poems')
+      .select('*')
+      .order('created_at', { ascending: false }) // Show latest first
+      .range(start, end);
+
+    if (error) {
+      console.error('Error fetching poems:', error);
+    } else {
+      if (data.length < pageSize) {
+        setHasMore(false); // No more data to fetch
+      }
+      setPoems(reset ? data : [...poems, ...data]);
+    }
+    setLoading(false);
+  };
+
+  const handleNextPage = () => {
+    const nextPage = page + 1;
+    setPage(nextPage);
+    fetchPoems(nextPage);
+  };
 
   return (
     <motion.div
@@ -48,6 +73,11 @@ function PoemsPage() {
           </Box>
         ))}
       </Box>
+      {hasMore && (
+        <IconButton onClick={handleNextPage} sx={styles.nextButton} disabled={loading}>
+          <ArrowDropDown />
+        </IconButton>
+      )}
     </motion.div>
   );
 }
@@ -55,7 +85,7 @@ function PoemsPage() {
 const styles = {
   container: {
     minHeight: '100vh',
-    backgroundColor: '#FDF6EE', // Beige background
+    backgroundColor: '#FDF6EE',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
@@ -70,29 +100,28 @@ const styles = {
   },
   poemsContainer: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)', // Forces exactly 3 columns
+    gridTemplateColumns: 'repeat(3, 1fr)',
     gap: '20px',
     paddingBottom: '40px',
-    width: '100%', // Ensures container takes full width
-    maxWidth: '1200px', // Optional: prevents cards from getting too wide on large screens
+    width: '100%',
+    maxWidth: '1200px',
   },
-
   poemCard: {
-    backgroundColor: '#FDF6EE', // Beige background for the card
+    backgroundColor: '#FDF6EE',
     padding: '20px',
     borderRadius: '20px',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)', // Floating shadow
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
     textAlign: 'center',
     width: '300px',
-    height: 'auto', // Flexible height
+    height: 'auto',
     margin: '0 auto',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between', // Spacing between elements
+    justifyContent: 'space-between',
     '&:hover': {
       transform: 'scale(1.05)',
-      boxShadow: '0 8px 16px rgba(0, 0, 0, 0.3)', // Stronger shadow on hover
+      boxShadow: '0 8px 16px rgba(0, 0, 0, 0.3)',
     },
   },
   poemTitle: {
@@ -127,6 +156,14 @@ const styles = {
     textTransform: 'none',
     fontWeight: 'bold',
     marginTop: '15px',
+    ':hover': {
+      backgroundColor: '#7B9464',
+    },
+  },
+  nextButton: {
+    marginTop: '20px',
+    backgroundColor: '#97A97C',
+    color: '#FFFFFF',
     ':hover': {
       backgroundColor: '#7B9464',
     },
